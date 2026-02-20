@@ -1,1 +1,160 @@
-/* Add styles here */
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;600;700&display=swap");
+
+:root {
+  --bg: #f7f3ea;
+  --bg-alt: #f0e7d8;
+  --ink: #1f1f1f;
+  --accent: #e06c38;
+  --accent-dark: #c4572b;
+  --card: #ffffff;
+  --shadow: rgba(37, 31, 22, 0.12);
+  --radius: 24px;
+  font-family: "IBM Plex Sans KR", "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--ink);
+  background: radial-gradient(circle at top, var(--bg) 0%, var(--bg-alt) 55%, #e7dcc7 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 20px;
+}
+
+.page {
+  width: min(900px, 100%);
+  display: grid;
+  gap: 28px;
+}
+
+.hero {
+  text-align: left;
+  display: grid;
+  gap: 8px;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  font-size: 12px;
+  margin: 0;
+  color: #6d5f50;
+}
+
+h1 {
+  font-size: clamp(32px, 4vw, 52px);
+  margin: 0;
+}
+
+.subtitle {
+  margin: 0;
+  font-size: 16px;
+  color: #4d4034;
+}
+
+.card {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 32px;
+  box-shadow: 0 18px 40px var(--shadow);
+  display: grid;
+  gap: 24px;
+}
+
+.numbers {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.ball {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  font-size: clamp(18px, 3vw, 26px);
+  font-weight: 700;
+  color: #ffffff;
+  background: linear-gradient(145deg, #f8b26a, #e3743b);
+  box-shadow: inset 0 3px 10px rgba(255, 255, 255, 0.35), 0 10px 18px rgba(224, 108, 56, 0.3);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.ball.placeholder {
+  background: linear-gradient(145deg, #dcd2c4, #c3b7a6);
+  color: #ffffff;
+  opacity: 0.7;
+}
+
+.ball.reveal {
+  animation: pop 0.45s ease forwards;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 12px 20px;
+  border-radius: 999px;
+  font-weight: 600;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+.primary {
+  background: var(--accent);
+  color: #fffaf5;
+  box-shadow: 0 10px 20px rgba(224, 108, 56, 0.25);
+}
+
+.primary:hover {
+  background: var(--accent-dark);
+}
+
+.ghost {
+  background: #f6efe5;
+  color: #5a4a3a;
+}
+
+.hint {
+  margin: 0;
+  color: #746555;
+  font-size: 14px;
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.2;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 700px) {
+  .numbers {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .card {
+    padding: 24px;
+  }
+}
