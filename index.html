@@ -22,7 +22,15 @@
       <p class="subtitle">버튼을 누르면 1부터 45 사이의 번호 6개를 추천해드립니다.</p>
     </header>
 
-    <section class="card">
+    <nav class="quick-nav">
+      <a href="#lotto">로또 추천</a>
+      <a href="#animal">동물상 테스트</a>
+      <a href="#inquiry">제휴 문의</a>
+      <a href="#guide">서비스 안내</a>
+      <a href="#comments">댓글</a>
+    </nav>
+
+    <section class="card" id="lotto">
       <div class="numbers" id="numbers" aria-live="polite">
         <div class="ball placeholder">?</div>
         <div class="ball placeholder">?</div>
@@ -40,7 +48,7 @@
       <p class="hint">Tip: 다시 누를 때마다 새로운 조합이 나옵니다.</p>
     </section>
 
-    <section class="card form-card">
+    <section class="card form-card" id="inquiry">
       <div class="form-head">
         <h2>제휴 문의</h2>
         <p class="subtitle">간단한 정보만 남겨주시면 빠르게 연락드릴게요.</p>
@@ -70,7 +78,7 @@
       </form>
     </section>
 
-    <section class="card animal-card">
+    <section class="card animal-card" id="animal">
       <div class="form-head">
         <h2>동물상 테스트</h2>
         <p class="subtitle">카메라로 얼굴을 비추면 고양이/개 중 어느 쪽에 가까운지 보여줍니다.</p>
@@ -92,7 +100,41 @@
       </div>
     </section>
 
-    <section class="card comments-card">
+    <section class="card guide-card" id="guide">
+      <div class="form-head">
+        <h2>서비스 안내</h2>
+        <p class="subtitle">콘텐츠 품질과 사용자 경험을 최우선으로 설계했습니다.</p>
+      </div>
+      <div class="guide-grid">
+        <div class="guide-block">
+          <h3>서비스 소개</h3>
+          <p>이 사이트는 오늘의 로또 번호 추천과 간단한 동물상 테스트를 제공하는 취향 기반 엔터테인먼트 페이지입니다. 방문자가 빠르게 기능을 이해하고 실행할 수 있도록 핵심 행동을 한 화면에 배치했습니다.</p>
+        </div>
+        <div class="guide-block">
+          <h3>이용 방법</h3>
+          <p>로또 추천은 버튼을 클릭하면 1~45 중 6개 번호가 자동으로 생성됩니다. 동물상 테스트는 카메라 접근 허용 후 실시간으로 결과를 표시하며, 종료 버튼으로 언제든 중단할 수 있습니다.</p>
+        </div>
+        <div class="guide-block">
+          <h3>모델 설명 및 한계</h3>
+          <p>동물상 테스트는 Teachable Machine 이미지 모델을 사용하며, 얼굴 특징에 따라 확률을 계산합니다. 결과는 재미를 위한 참고용이며, 실제 성격이나 성향을 단정하지 않습니다.</p>
+        </div>
+        <div class="guide-block">
+          <h3>개인정보 및 카메라</h3>
+          <p>카메라 영상은 브라우저에서만 처리되며 서버로 전송되지 않습니다. 사용자는 권한을 거부하거나 언제든 테스트를 종료할 수 있습니다.</p>
+        </div>
+        <div class="guide-block">
+          <h3>운영 원칙</h3>
+          <p>중복 콘텐츠를 최소화하고, 필요한 정보를 구조적으로 제공하여 사용자가 쉽게 탐색할 수 있도록 구성했습니다. 광고는 콘텐츠를 방해하지 않는 위치에 배치하는 것을 원칙으로 합니다.</p>
+        </div>
+        <div class="guide-block">
+          <h3>자주 묻는 질문</h3>
+          <p><strong>Q.</strong> 로또 추천이 당첨을 보장하나요? <strong>A.</strong> 아닙니다. 확률은 동일하며, 참고용입니다.</p>
+          <p><strong>Q.</strong> 카메라 영상이 저장되나요? <strong>A.</strong> 저장되지 않습니다.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card comments-card" id="comments">
       <div class="form-head">
         <h2>댓글</h2>
         <p class="subtitle">의견을 남겨주세요.</p>

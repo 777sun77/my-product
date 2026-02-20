@@ -94,6 +94,33 @@ h1 {
   gap: 24px;
 }
 
+h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.quick-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.quick-nav a {
+  text-decoration: none;
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.45);
+  border: 1px solid rgba(90, 74, 58, 0.15);
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 14px;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.quick-nav a:hover {
+  background: rgba(224, 108, 56, 0.12);
+  transform: translateY(-1px);
+}
+
 h2 {
   margin: 0;
   font-size: clamp(24px, 3vw, 32px);
@@ -105,6 +132,32 @@ h2 {
 
 .comments-card {
   gap: 18px;
+}
+
+.guide-card {
+  gap: 20px;
+}
+
+.guide-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.guide-block {
+  display: grid;
+  gap: 10px;
+  padding: 18px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.35);
+  border: 1px solid rgba(90, 74, 58, 0.08);
+}
+
+.guide-block p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+  font-size: 14px;
 }
 
 .animal-card {
@@ -348,6 +401,10 @@ body.dark .toggle {
   }
 
   .animal-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .guide-grid {
     grid-template-columns: 1fr;
   }
 }
