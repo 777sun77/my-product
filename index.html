@@ -67,6 +67,24 @@
       </form>
     </section>
 
+    <section class="card animal-card">
+      <div class="form-head">
+        <h2>동물상 테스트</h2>
+        <p class="subtitle">카메라로 얼굴을 비추면 고양이/개 중 어느 쪽에 가까운지 보여줍니다.</p>
+      </div>
+      <div class="animal-grid">
+        <div class="animal-panel">
+          <button class="primary" id="tmStart" type="button">테스트 시작</button>
+          <p class="hint" id="tmStatus">카메라 권한이 필요합니다.</p>
+          <div id="webcam-container" class="webcam"></div>
+        </div>
+        <div class="animal-panel">
+          <div class="result" id="tmResult">결과 대기중</div>
+          <div id="label-container" class="label-list"></div>
+        </div>
+      </div>
+    </section>
+
     <section class="card comments-card">
       <div class="form-head">
         <h2>댓글</h2>
@@ -94,6 +112,8 @@
     </section>
   </main>
 
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
   <script defer type="text/javascript" src="/main.js"></script>
 </body>
 </html>

@@ -107,6 +107,71 @@ h2 {
   gap: 18px;
 }
 
+.animal-card {
+  gap: 20px;
+}
+
+.animal-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.animal-panel {
+  display: grid;
+  gap: 14px;
+}
+
+.webcam {
+  width: 100%;
+  aspect-ratio: 1;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 20px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.webcam canvas {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.result {
+  font-size: clamp(20px, 3vw, 28px);
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.label-list {
+  display: grid;
+  gap: 10px;
+}
+
+.label-item {
+  display: grid;
+  gap: 6px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.label-bar {
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(90, 74, 58, 0.15);
+  overflow: hidden;
+}
+
+.label-bar span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(120deg, #f08a4b, #6ec6ff);
+  width: 0%;
+  transition: width 0.25s ease;
+}
+
 .form-head {
   display: grid;
   gap: 8px;
@@ -266,5 +331,9 @@ body.dark .toggle {
 
   .card {
     padding: 24px;
+  }
+
+  .animal-grid {
+    grid-template-columns: 1fr;
   }
 }
