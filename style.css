@@ -8,6 +8,11 @@
   --accent-dark: #c4572b;
   --card: #ffffff;
   --shadow: rgba(37, 31, 22, 0.12);
+  --muted: #4d4034;
+  --muted-soft: #746555;
+  --button-ghost: #f6efe5;
+  --button-ghost-ink: #5a4a3a;
+  --eyebrow: #6d5f50;
   --radius: 24px;
   font-family: "IBM Plex Sans KR", "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
 }
@@ -27,6 +32,21 @@ body {
   padding: 48px 20px;
 }
 
+body.dark {
+  --bg: #151515;
+  --bg-alt: #1e1c1a;
+  --ink: #f4f0ea;
+  --accent: #f08a4b;
+  --accent-dark: #d56f34;
+  --card: #1f1b18;
+  --shadow: rgba(0, 0, 0, 0.4);
+  --muted: #d2c7ba;
+  --muted-soft: #b4a79a;
+  --button-ghost: #2b2521;
+  --button-ghost-ink: #e2d7c9;
+  --eyebrow: #c8b9a7;
+}
+
 .page {
   width: min(900px, 100%);
   display: grid;
@@ -39,12 +59,19 @@ body {
   gap: 8px;
 }
 
+.hero-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
 .eyebrow {
   text-transform: uppercase;
   letter-spacing: 0.28em;
   font-size: 12px;
   margin: 0;
-  color: #6d5f50;
+  color: var(--eyebrow);
 }
 
 h1 {
@@ -55,7 +82,7 @@ h1 {
 .subtitle {
   margin: 0;
   font-size: 16px;
-  color: #4d4034;
+  color: var(--muted);
 }
 
 .card {
@@ -128,13 +155,25 @@ button:active {
 }
 
 .ghost {
-  background: #f6efe5;
-  color: #5a4a3a;
+  background: var(--button-ghost);
+  color: var(--button-ghost-ink);
+}
+
+.toggle {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid rgba(90, 74, 58, 0.3);
+  padding: 8px 16px;
+  font-size: 14px;
+}
+
+body.dark .toggle {
+  border-color: rgba(244, 240, 234, 0.35);
 }
 
 .hint {
   margin: 0;
-  color: #746555;
+  color: var(--muted-soft);
   font-size: 14px;
 }
 

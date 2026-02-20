@@ -1,6 +1,7 @@
 const numbersWrap = document.getElementById("numbers");
 const generateBtn = document.getElementById("generateBtn");
 const resetBtn = document.getElementById("resetBtn");
+const themeToggle = document.getElementById("themeToggle");
 
 const COLOR_PALETTE = [
   "linear-gradient(145deg, #f8b26a, #e3743b)",
@@ -10,6 +11,28 @@ const COLOR_PALETTE = [
   "linear-gradient(145deg, #b58df1, #7b50d6)",
   "linear-gradient(145deg, #f7d36a, #d4a43a)",
 ];
+
+const THEME_KEY = "lotto-theme";
+
+function applyTheme(mode) {
+  document.body.classList.toggle("dark", mode === "dark");
+  themeToggle.setAttribute("aria-pressed", mode === "dark");
+  themeToggle.textContent = mode === "dark" ? "라이트 모드" : "다크 모드";
+}
+
+function getInitialTheme() {
+  const stored = localStorage.getItem(THEME_KEY);
+  if (stored === "dark" || stored === "light") {
+    return stored;
+  }
+  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+}
+
+function toggleTheme() {
+  const next = document.body.classList.contains("dark") ? "light" : "dark";
+  localStorage.setItem(THEME_KEY, next);
+  applyTheme(next);
+}
 
 function pickNumbers() {
   const pool = Array.from({ length: 45 }, (_, i) => i + 1);
@@ -55,4 +78,8 @@ resetBtn.addEventListener("click", () => {
   resetNumbers();
 });
 
+themeToggle.addEventListener("click", toggleTheme);
+
 resetNumbers();
+
+applyTheme(getInitialTheme());
