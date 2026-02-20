@@ -103,6 +103,10 @@ h2 {
   gap: 18px;
 }
 
+.comments-card {
+  gap: 18px;
+}
+
 .form-head {
   display: grid;
   gap: 8px;
