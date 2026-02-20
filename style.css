@@ -122,6 +122,13 @@ h2 {
   gap: 14px;
 }
 
+.action-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
 .webcam {
   width: 100%;
   aspect-ratio: 1;
@@ -142,6 +149,13 @@ h2 {
   font-size: clamp(20px, 3vw, 28px);
   font-weight: 700;
   color: var(--ink);
+}
+
+.desc {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.6;
 }
 
 .label-list {

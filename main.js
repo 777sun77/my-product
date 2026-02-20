@@ -3,8 +3,10 @@ const generateBtn = document.getElementById("generateBtn");
 const resetBtn = document.getElementById("resetBtn");
 const themeToggle = document.getElementById("themeToggle");
 const tmStart = document.getElementById("tmStart");
+const tmStop = document.getElementById("tmStop");
 const tmStatus = document.getElementById("tmStatus");
 const tmResult = document.getElementById("tmResult");
+const tmDesc = document.getElementById("tmDesc");
 const tmLabelContainer = document.getElementById("label-container");
 
 const COLOR_PALETTE = [
@@ -23,6 +25,13 @@ let tmModel;
 let tmWebcam;
 let tmMaxPredictions = 0;
 let tmRunning = false;
+let tmLoopActive = false;
+
+const FACE_DESCRIPTIONS = {
+  dog: "활발하고 친근한 에너지가 돋보여요. 사람들과 금방 가까워지는 타입입니다.",
+  cat: "차분하고 섬세한 분위기가 매력적이에요. 나만의 리듬을 잘 지키는 타입입니다.",
+  fallback: "분위기가 균형 있게 나타나요. 다양한 매력을 조화롭게 가진 타입입니다.",
+};
 
 function applyTheme(mode) {
   document.body.classList.toggle("dark", mode === "dark");
@@ -51,6 +60,7 @@ async function initTeachableMachine() {
 
   tmRunning = true;
   tmStart.disabled = true;
+  tmStop.disabled = false;
   tmStart.textContent = "카메라 준비중...";
   tmStatus.textContent = "모델을 불러오는 중입니다.";
 
@@ -65,6 +75,7 @@ async function initTeachableMachine() {
     tmWebcam = new tmImage.Webcam(260, 260, flip);
     await tmWebcam.setup();
     await tmWebcam.play();
+    tmLoopActive = true;
     window.requestAnimationFrame(tmLoop);
 
     const webcamContainer = document.getElementById("webcam-container");
@@ -88,18 +99,47 @@ async function initTeachableMachine() {
   } catch (error) {
     tmStatus.textContent = "카메라 접근 또는 모델 로딩에 실패했습니다.";
     tmStart.disabled = false;
+    tmStop.disabled = true;
     tmStart.textContent = "다시 시도";
     tmRunning = false;
   }
 }
 
 async function tmLoop() {
-  if (!tmWebcam) {
+  if (!tmWebcam || !tmLoopActive) {
     return;
   }
   tmWebcam.update();
   await tmPredict();
   window.requestAnimationFrame(tmLoop);
+}
+
+function resetTeachableMachine() {
+  tmLoopActive = false;
+  if (tmWebcam) {
+    tmWebcam.stop();
+  }
+  const webcamContainer = document.getElementById("webcam-container");
+  webcamContainer.innerHTML = "";
+  tmLabelContainer.innerHTML = "";
+  tmResult.textContent = "결과 대기중";
+  tmDesc.textContent = "테스트를 시작하면 설명이 표시됩니다.";
+  tmStatus.textContent = "테스트가 종료되었습니다.";
+  tmStart.disabled = false;
+  tmStop.disabled = true;
+  tmStart.textContent = "테스트 시작";
+  tmRunning = false;
+}
+
+function getFaceDescription(className) {
+  const normalized = className.toLowerCase();
+  if (normalized.includes("dog") || normalized.includes("개")) {
+    return FACE_DESCRIPTIONS.dog;
+  }
+  if (normalized.includes("cat") || normalized.includes("고양이")) {
+    return FACE_DESCRIPTIONS.cat;
+  }
+  return FACE_DESCRIPTIONS.fallback;
 }
 
 async function tmPredict() {
@@ -110,6 +150,7 @@ async function tmPredict() {
 
   const sorted = [...prediction].sort((a, b) => b.probability - a.probability);
   if (sorted[0]) {
+    tmDesc.textContent = getFaceDescription(sorted[0].className);
     tmResult.textContent = `${sorted[0].className}상 (${(sorted[0].probability * 100).toFixed(1)}%)`;
   }
 
@@ -174,6 +215,7 @@ resetBtn.addEventListener("click", () => {
 
 themeToggle.addEventListener("click", toggleTheme);
 tmStart.addEventListener("click", initTeachableMachine);
+tmStop.addEventListener("click", resetTeachableMachine);
 
 resetNumbers();
 

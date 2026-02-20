@@ -74,12 +74,16 @@
       </div>
       <div class="animal-grid">
         <div class="animal-panel">
-          <button class="primary" id="tmStart" type="button">테스트 시작</button>
+          <div class="action-row">
+            <button class="primary" id="tmStart" type="button">테스트 시작</button>
+            <button class="ghost" id="tmStop" type="button" disabled>테스트 종료</button>
+          </div>
           <p class="hint" id="tmStatus">카메라 권한이 필요합니다.</p>
           <div id="webcam-container" class="webcam"></div>
         </div>
         <div class="animal-panel">
           <div class="result" id="tmResult">결과 대기중</div>
+          <p class="desc" id="tmDesc">테스트를 시작하면 설명이 표시됩니다.</p>
           <div id="label-container" class="label-list"></div>
         </div>
       </div>
