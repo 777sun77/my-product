@@ -36,6 +36,36 @@
 
       <p class="hint">Tip: 다시 누를 때마다 새로운 조합이 나옵니다.</p>
     </section>
+
+    <section class="card form-card">
+      <div class="form-head">
+        <h2>제휴 문의</h2>
+        <p class="subtitle">간단한 정보만 남겨주시면 빠르게 연락드릴게요.</p>
+      </div>
+      <form class="contact-form" action="https://formspree.io/f/xaqddann" method="POST">
+        <label>
+          이름
+          <input type="text" name="name" placeholder="홍길동" required />
+        </label>
+        <label>
+          회사명
+          <input type="text" name="company" placeholder="예: Lucky Labs" />
+        </label>
+        <label>
+          이메일
+          <input type="email" name="email" placeholder="you@example.com" required />
+        </label>
+        <label>
+          연락처
+          <input type="tel" name="phone" placeholder="010-0000-0000" />
+        </label>
+        <label class="full">
+          문의내용
+          <textarea name="message" rows="5" placeholder="어떤 협업을 원하시나요?" required></textarea>
+        </label>
+        <button class="primary" type="submit">문의 보내기</button>
+      </form>
+    </section>
   </main>
 
   <script defer type="text/javascript" src="/main.js"></script>

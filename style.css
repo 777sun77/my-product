@@ -94,6 +94,65 @@ h1 {
   gap: 24px;
 }
 
+h2 {
+  margin: 0;
+  font-size: clamp(24px, 3vw, 32px);
+}
+
+.form-card {
+  gap: 18px;
+}
+
+.form-head {
+  display: grid;
+  gap: 8px;
+}
+
+.contact-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.contact-form label {
+  display: grid;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.contact-form input,
+.contact-form textarea {
+  border-radius: 16px;
+  border: 1px solid rgba(90, 74, 58, 0.2);
+  padding: 12px 14px;
+  font-size: 15px;
+  font-family: inherit;
+  background: transparent;
+  color: var(--ink);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: rgba(224, 108, 56, 0.7);
+  box-shadow: 0 0 0 3px rgba(224, 108, 56, 0.15);
+}
+
+.contact-form .full {
+  grid-column: span 2;
+}
+
+.contact-form button {
+  justify-self: start;
+}
+
+body.dark .contact-form input,
+body.dark .contact-form textarea {
+  border-color: rgba(244, 240, 234, 0.2);
+}
+
 .numbers {
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
@@ -191,6 +250,14 @@ body.dark .toggle {
 @media (max-width: 700px) {
   .numbers {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .contact-form {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-form .full {
+    grid-column: span 1;
   }
 
   .card {
